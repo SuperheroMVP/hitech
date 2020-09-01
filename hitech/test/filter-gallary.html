@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		.btn {
+			margin-bottom:3px;
+		}
+		.btn:hover{
+			cursor:pointer;
+		}
+		.btn-outline-primary:focus {
+			background-color:#007bff;
+			color:#fff;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+</head>
+<body>
+	<!-- Dont remove id filters -->
+	<div id="filters" class="container-fluid mb-5 mt-4">  
+		<button class="btn btn-outline-primary" aria-pressed="true" data-filter="*">ALL</button>
+		<button class="btn btn-outline-primary" data-filter=".design">Design</button>
+		<button class="btn btn-outline-primary" data-filter=".webdesign">Web Design</button>
+		<button class="btn btn-outline-primary" data-filter=".logotipos">Logotipos</button>
+		<button class="btn btn-outline-primary" data-filter=".videomaker">VideoMaker</button>
+	</div>
+
+	<script>
+		$('#filters button').click(function(){
+			e.preventDefault();
+		})
+	</script>
+	<!--  Dont remove class grid -->
+	<div class="grid"> 
+
+		<div class="container"><!--  Dont remove class container -->
+			<!--  use the data-category always together in the class  -->
+			<div class="element-item design" data-category="design"><!--  Dont remove class element-item -->
+				<img src="https://cdn04.masterstudies.com/gfx/image/listing-page/80/main/Estudos-de-Design.jpg" class="w-100 h-100">
+			</div>
+
+			<div class="element-item webdesign" data-category="webdesign">
+				<img src="http://www.sirenconsultingfirm.com/wp-content/uploads/2014/11/responsive-web-design-300x200.jpg" class="w-100 h-100">
+			</div>
+
+			<div class="element-item videomaker" data-category="videomaker">
+				<img src="http://iphotochannel.com.br/wp-content/uploads/2017/08/iphoto-surfaceone-300x200.jpg" class="w-100 h-100">
+			</div>
+
+			<div class="element-item webdesign" data-category="webdesign">
+				<img src="http://www.sirenconsultingfirm.com/wp-content/uploads/2014/11/responsive-web-design-300x200.jpg" class="w-100 h-100">
+			</div>
+
+			<div class="element-item logotipos" data-category="logotipos">
+				<img src="https://designersbrasileiros.com.br/wp-content/uploads/2017/10/logotipos-com-mensagens-ocultas-300x200.png" class="w-100 h-100">
+			</div>
+
+			<div class="element-item webdesign" data-category="webdesign">
+				<img src="http://www.sirenconsultingfirm.com/wp-content/uploads/2014/11/responsive-web-design-300x200.jpg" class="w-100 h-100">
+			</div>
+
+		</div>
+
+	</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://npmcdn.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
+
+	<script type="text/javascript">
+		var $grid = $('.container').isotope({
+			itemSelector: '.element-item',
+			layoutMode: 'fitRows',
+			getSortData: {
+				category: '[data-category]',
+				weight: function( itemElem ) {
+					var weight = $( itemElem ).find('.weight').text();
+					return parseFloat( weight.replace( /[\(\)]/g, '') );
+				}
+			}
+		});
+
+// filter functions
+var filterFns = {
+  // show if number is greater than 50
+  numberGreaterThan50: function() {
+  	var number = $(this).find('.number').text();
+  	return parseInt( number, 10 ) > 50;
+  },
+  // show if name ends with -ium
+  ium: function() {
+  	var name = $(this).find('.name').text();
+  	return name.match( /ium$/ );
+  }
+};
+
+// bind filter button click
+$('#filters').on( 'click', 'button', function() {
+	var filterValue = $( this ).attr('data-filter');
+  // use filterFn if matches value
+  filterValue = filterFns[ filterValue ] || filterValue;
+  $grid.isotope({ filter: filterValue });
+});
+
+// bind sort button click
+$('#sorts').on( 'click', 'button', function() {
+	var sortByValue = $(this).attr('data-sort-by');
+	$grid.isotope({ sortBy: sortByValue });
+});
+</script>
+</body>
+</html>
