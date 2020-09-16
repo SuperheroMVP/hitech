@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Service;
-use App\Resolution;
-
+use App\Commitment;
+use App\Development;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +12,8 @@ class HomeController extends Controller
     public function index()
     {
         $services =Service::limit(4)->get();
-        $resolutions = Resolution::all();
-        return view('pages.index',compact('services','resolutions'));
+        $commitments = Commitment::all();
+        $developments =Development::all();
+        return view('pages.index',compact('services','commitments','developments'));
     }
 }

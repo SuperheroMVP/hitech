@@ -1530,7 +1530,7 @@ features
 parallax
 --------------------------------------------- 
 */
-.parallax {
+/*.parallax {
   min-height: 215px;
   overflow: hidden;
   position: relative;
@@ -1703,7 +1703,7 @@ parallax
   .parallax-counter .parallax-content .count-item strong {
     margin-top: 0px;
   }
-}
+}*/
 
 /* 
 ---------------------------------------------

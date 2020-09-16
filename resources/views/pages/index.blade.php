@@ -90,7 +90,7 @@
 				{{-- 	{{dd($resolutions)}} --}}
 					<div class="row">
 						<?php $i=0; ?>
-						@foreach($resolutions as $resolution)
+						@foreach($commitments as $commitment)
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div
 								   @if($i==0)
@@ -100,7 +100,7 @@
 								   @endif
 								 >
 									<i class="fa fa-angle-right"></i>
-									<span>{{$resolution->title}}</span>
+									<span>{{$commitment->title}}</span>
 								</div>
 							</div>
 							<?php $i++; ?>
@@ -128,59 +128,27 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
 				<div class="left-heading">
-					<h2 class="section-title">Design & Development</h2>
+					<h2 class="section-title">Thiết kế và phát triển</h2>
 				</div>
 				<div class="left-text">
-					<p>Phasellus vitae velit sit amet diam semper commodo quis quis libero. Morbi consequat arcu augue, molestie faucibus metus ullamcorper vel.</p>
+					<p>{{setting('description.admin_development')}}</p>
 					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home active" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>Web Design</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>Mobile App Design</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>Android Development</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>iOS Development</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>Back-End</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>Front-End</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>e-Commerce</span>
-							</a>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12">
-							<a class="btn-home" href="#">
-								<i class="fa fa-angle-right"></i>
-								<span>Print Design</span>
-							</a>
-						</div>
+						<?php $i=0 ?>
+						@foreach($developments as $development)
+							<div class="col-lg-6 col-md-6 col-sm-12">
+								<div
+								@if($i==0)
+								  class="btn-home active"
+								@else
+                                class="btn-home"
+                                @endif
+                                >
+									<i class="fa fa-angle-right"></i>
+									<span>{{$development->name}}</span>
+								</div>
+							</div>
+							<?php $i++?>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -196,7 +164,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 col-sm-12">
-					<div class="count-item">
+					<div class="count-item d-flex flex-column text-center">
 						<strong>96</strong>
 						<span>Số giờ làm việc</span>
 					</div>

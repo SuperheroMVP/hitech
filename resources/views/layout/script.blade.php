@@ -9,7 +9,7 @@
 <script src="assets/js/scrollreveal.min.js"></script>
 <script src="assets/js/parallax.min.js"></script>
 <script src="assets/js/waypoints.min.js"></script>
-<script src="assets/js/jquery.counterup.min.js"></script>
+{{-- <script src="assets/js/jquery.counterup.min.js"></script> --}}
 <script src="assets/js/imgfix.min.js"></script>	
 
 <!-- Global Init -->
